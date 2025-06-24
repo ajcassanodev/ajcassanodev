@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<h2>Profile</h2>
+<form method="post">
+  <label for="email">Email:</label>
+  <input type="email" name="email" value="{{ current_user.email }}" required><br>
+  <input type="submit" value="Update">
+</form>
+{% endblock %}
