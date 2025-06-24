@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Flask Site{% endblock %}</title>
+</head>
+<body>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  {% if current_user.is_authenticated %}
+    <p>Logged in as {{ current_user.username }} | <a href="{{ url_for('dashboard') }}">Dashboard</a> | <a href="{{ url_for('profile') }}">Profile</a> | <a href="{{ url_for('logout') }}">Logout</a></p>
+  {% endif %}
+  {% block content %}{% endblock %}
+</body>
+</html>
